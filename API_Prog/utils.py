@@ -1,12 +1,14 @@
-from schemas.customerschema import CustomerRequestNoId
+from schemas.customerschema import CustomerRequest
 from fastapi import HTTPException, status
 from datetime import datetime
 
-def custumer_validate(customer: CustomerRequestNoId) -> HTTPException:
-    if len(customer.CPF) != 11:
+def custumer_validate(customer: CustomerRequest) -> HTTPException:
+    if len(str(customer.CPF)) != 11:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, detail="CPF invalido"
         )
+
+
     try:
         int(customer.CPF)
     except:

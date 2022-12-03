@@ -24,7 +24,7 @@ class CustomersRepository:
     def update_db(db: Session, custumer: CustomersModel) -> "CustomersModel":
         if custumer.CPF:
             db.merge(custumer)
-        db.commit()
+            db.commit()
         return custumer
 
     @staticmethod

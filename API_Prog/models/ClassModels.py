@@ -7,7 +7,7 @@ class CustomersModel(Base):
 
     CPF: int  = Column(Integer, primary_key=True)
     Name: str = Column(String(80), nullable=False)
-    Data_nascimento: date = Column(Date, nullable=False)
+    Data_nascimento: str = Column(String, nullable=False)
     Estado_civil: str  = Column(String(1), nullable=False)
     Sexo: str  = Column(String(1), nullable=False)
 

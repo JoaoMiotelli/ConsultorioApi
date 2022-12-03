@@ -7,6 +7,10 @@ class AgendamentosRepository:
         return db.query(AgendamentoModel).filter(AgendamentoModel.id ==_id).first()
 
     @staticmethod
+    def Find_by_cpf(db: Session, _cpf) -> "AgendamentoModel":
+        return db.query(AgendamentoModel).filter(AgendamentoModel.cpf ==_cpf).all()
+
+    @staticmethod
     def Exist_by_id(db: Session, _id) -> "AgendamentoModel":
         return db.query(AgendamentoModel).filter(AgendamentoModel.id ==_id).first() is not None
 

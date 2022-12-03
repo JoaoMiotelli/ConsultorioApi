@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from models.ClassModels import servicoModel
 
-class CustomersRepository:
+class ServiceRepository:
     @staticmethod
     def Find_by_id(db: Session, _id) -> "servicoModel":
         return db.query(servicoModel).filter(servicoModel.id ==_id).first()

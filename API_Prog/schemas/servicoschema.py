@@ -6,6 +6,10 @@ class ServicoBase(BaseModel):
     tipo_servico: int
     agendamento: int
 
+class ServicorequestNoId(BaseModel):
+    tipo_servico: int
+    agendamento: int
+
 
 class ServicoRequest(ServicoBase):
     ...

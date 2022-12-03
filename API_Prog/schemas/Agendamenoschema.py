@@ -1,5 +1,5 @@
 from pydantic import BaseModel, validator
-from datetime import datetime,date
+from datetime import datetime
 
 class AgendamentoBase(BaseModel):
     CPF: int 
