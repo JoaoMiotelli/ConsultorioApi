@@ -15,8 +15,9 @@ class AgendamentoModel(Base):
     __tablename__ = "Agendamento"
 
     id: int = Column(Integer, primary_key=True)
-    datahora: datetime = Column(DateTime, nullable=False)
-    Status: str = Column(String(1), nullable=False, default=1)
+    data: str = Column(String, nullable=False)
+    hora: str = Column(String, nullable=False)
+    Status: int = Column(Integer, nullable=False, default=1)
     cpf: int = Column(Integer, ForeignKey("customers.CPF"), nullable=False)
 
 

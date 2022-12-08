@@ -76,9 +76,9 @@ def find_all(db: Session = Depends(get_db)):
     return [AgendamentoResponse.from_orm(CustomersModel) for CustomersModel in customers]
 
 #Metodo post para registrar um novo agendamento para o cliente
-@app.post("/api/agendamento/{cpf}", response_model=AgendamentoRequestNoId, status_code=status.HTTP_201_CREATED)
+@app.post("/api/agendamento", response_model=AgendamentoRequestNoId, status_code=status.HTTP_201_CREATED)
 def create(request: AgendamentoRequestNoId, db: Session = Depends(get_db)):
-    if CustomersRepository.Exist_by_cpf(db, request.CPF):
+    if CustomersRepository.Exist_by_cpf(db, request.cpf):
         agendamento = AgendamentosRepository.save_to_db(db, AgendamentoModel(**request.dict()))
         return AgendamentoResponse.from_orm(agendamento)
     else:
