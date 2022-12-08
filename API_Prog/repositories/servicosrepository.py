@@ -7,6 +7,10 @@ class ServiceRepository:
         return db.query(servicoModel).filter(servicoModel.id ==_id).first()
 
     @staticmethod
+    def Find_by_agenda(db: Session, _id) -> "servicoModel":
+        return db.query(servicoModel).filter(servicoModel.Agendamento ==_id).first()
+
+    @staticmethod
     def Exist_by_id(db: Session, _id) -> "servicoModel":
         return db.query(servicoModel).filter(servicoModel.id ==_id).first() is not None
 

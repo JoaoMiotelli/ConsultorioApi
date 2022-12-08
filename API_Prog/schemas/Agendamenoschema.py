@@ -12,7 +12,6 @@ class AgendamentoRequestNoId(BaseModel):
     cpf: int 
     data: str
     hora: str
-    Status: int 
 
 class AgendamentoRequest(AgendamentoBase):
     ...

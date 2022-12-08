@@ -3,19 +3,21 @@ from datetime import datetime,date
 
 class ServicoBase(BaseModel):
     id: int
-    tipo_servico: int
-    agendamento: int
+    Agendamento: int
+    Descricao: str
+    valor: float
 
 class ServicorequestNoId(BaseModel):
-    tipo_servico: int
-    agendamento: int
+    Agendamento: int
+    Descricao: str
+    valor: float
 
 
 class ServicoRequest(ServicoBase):
     ...
 
 class ServicoResponse(ServicoBase):
-    CPF: int
+    id: int
 
     class Config:
         orm_mode = True

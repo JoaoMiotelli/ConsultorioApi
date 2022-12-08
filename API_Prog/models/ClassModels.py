@@ -25,13 +25,8 @@ class servicoModel(Base):
     __tablename__ = 'servicos'
 
     id: int = Column(Integer, primary_key=True)
-    tipo_servico: int = Column(Integer, ForeignKey("servicos_desc.id"),nullable=True)
-    Agendamento: int = Column(Integer, ForeignKey("Agendamento.id"), nullable=False)
-
-class servicoDescModel(Base):
-    __tablename__ = 'servicos_desc'
-
-    id: int = Column(Integer, primary_key=True)
     Descricao: str = Column(String(80), nullable=True)
     valor: float = Column(Float, nullable=False)
+    Agendamento: int = Column(Integer, ForeignKey("Agendamento.id"), nullable=False)
+   
 

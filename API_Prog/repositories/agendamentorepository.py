@@ -15,6 +15,14 @@ class AgendamentosRepository:
         return db.query(AgendamentoModel).filter(AgendamentoModel.id ==_id).first() is not None
 
     @staticmethod
+    def Exist_by_data(db: Session, data) -> "AgendamentoModel":
+        return db.query(AgendamentoModel).filter(AgendamentoModel.data == data).first() is not None
+
+    @staticmethod
+    def Exist_by_hora(db: Session, hora) -> "AgendamentoModel":
+        return db.query(AgendamentoModel).filter(AgendamentoModel.hora == hora).first() is not None
+
+    @staticmethod
     def Find_all(db: Session) -> list["AgendamentoModel"]:
         return db.query(AgendamentoModel).all()
 

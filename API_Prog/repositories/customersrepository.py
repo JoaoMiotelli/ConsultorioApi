@@ -11,6 +11,10 @@ class CustomersRepository:
         return db.query(CustomersModel).filter(CustomersModel.CPF ==_CPF).first() is not None
 
     @staticmethod
+    def Exist_by_cpf(db: Session, _CPF) -> "CustomersModel":
+        return db.query(CustomersModel).filter(CustomersModel.CPF ==_CPF).first() is not None
+
+    @staticmethod
     def Find_all(db: Session) -> list["CustomersModel"]:
         return db.query(CustomersModel).all()
 
