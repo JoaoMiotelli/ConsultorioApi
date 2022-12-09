@@ -5,10 +5,10 @@ from models.ClassModels import *
 from server.database import engine, Base, get_db
 from repositories.customersrepository import CustomersRepository
 from repositories.agendamentorepository import AgendamentosRepository
-from repositories.servicosrepository import ServiceRepository
+
 from schemas.customerschema import CustomerRequest, CustomerResponse, CustomerRequestNoId
 from schemas.Agendamenoschema import AgendamentoRequest, AgendamentoResponse, AgendamentoRequestNoId
-from schemas.servicoschema import ServicoRequest, ServicoResponse, ServicorequestNoId
+
 from utils import *
 
 Base.metadata.create_all(bind=engine)
@@ -112,26 +112,3 @@ def update(id: int, request: AgendamentoRequest, db: Session = Depends(get_db)):
     
     agendamento = AgendamentosRepository.update_db(db,AgendamentoModel(**request.dict()) )
     return AgendamentoResponse.from_orm(agendamento)
-
-
-
-@app.post("/api/agendamento/servico/{id}", response_model=ServicoResponse)
-def update(id: int, request: ServicorequestNoId, db: Session = Depends(get_db)):
-    if not AgendamentosRepository.Exist_by_id(db, id):
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Não existe agendamento"
-        )
-    
-    servico = ServiceRepository.save_to_db(db, servicoModel(**request.dict()))
-    return ServicoResponse.from_orm(servico)
-
-
-@app.get("/api/agendamento/servico/{id}", response_model=CustomerResponse)
-def find_by_cpf(id: int, db: Session = Depends(get_db)):
-    servicos = ServiceRepository.Find_by_agenda(db, id)
-    if not servicos:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND, detail="Não existem servicos cadastrados para o agendamento"
-        )
-        
-    return [CustomerResponse.from_orm(servicomodel) for servicomodel in servicos]

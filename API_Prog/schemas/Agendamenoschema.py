@@ -7,11 +7,15 @@ class AgendamentoBase(BaseModel):
     hora:str
     Status: int 
     id: int
+    servico: str
+    valor: float
 
 class AgendamentoRequestNoId(BaseModel):
     cpf: int 
     data: str
     hora: str
+    servico: str
+    valor: float
 
 class AgendamentoRequest(AgendamentoBase):
     ...

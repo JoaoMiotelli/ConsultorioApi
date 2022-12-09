@@ -19,14 +19,8 @@ class AgendamentoModel(Base):
     hora: str = Column(String, nullable=False)
     Status: int = Column(Integer, nullable=False, default=1)
     cpf: int = Column(Integer, ForeignKey("customers.CPF"), nullable=False)
-
-
-class servicoModel(Base):
-    __tablename__ = 'servicos'
-
-    id: int = Column(Integer, primary_key=True)
-    Descricao: str = Column(String(80), nullable=True)
+    servico: str = Column(String, nullable=False)
     valor: float = Column(Float, nullable=False)
-    Agendamento: int = Column(Integer, ForeignKey("Agendamento.id"), nullable=False)
+
    
 
